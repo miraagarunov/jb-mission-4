@@ -1,0 +1,41 @@
+<!-- <div>
+    <h2>Operations for Account: 123456</h2>
+  
+    <div *ngFor="let operation of list()">
+      <div class="operation-card">
+        <h3>{{ operation.type.toUpperCase() }}</h3>
+        <p>Amount: {{ operation.amount }}</p>
+        <p>Date: {{ formatDate(operation.date) }}</p>
+  
+        <div *ngIf="operation.type === 'loan'">
+          <p>Interest: {{ operation.interest }}%</p>
+          <p>Payments: {{ operation.payments }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+
+<div id="list">
+  <div class="form-row">
+    <input [(ngModel)]="accountNumber" placeholder="account id..." />
+    <button (click)="fetch()">get ops</button>
+  </div>
+
+  <div *ngIf="loading">Loading...</div>
+
+  <h3 *ngIf="!loading && operations.length > 0">
+    account operation: {{ accountNumber }}
+  </h3>
+
+  <div *ngIf="operations.length > 0">
+    <app-operation-single
+      *ngFor="let operation of operations"
+      [operation]="operation"
+    ></app-operation-single>
+  </div>
+
+  <div *ngIf="!loading && operations.length === 0">
+    <p>No operations found</p>
+  </div>
+</div>
