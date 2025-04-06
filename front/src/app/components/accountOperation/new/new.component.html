@@ -1,0 +1,21 @@
+<form [formGroup]="newForm" (ngSubmit)="addOperation()">
+  <input formControlName="accountNumber" placeholder="Account Number" />
+  <input formControlName="amount" type="number" placeholder="Amount" />
+
+  <select formControlName="type">
+    <option value="deposit">Deposit</option>
+    <option value="withdrawal">Withdrawal</option>
+    <option value="loan">Loan</option>
+  </select>
+
+  <div *ngIf="operationType() === 'loan'">
+    <input formControlName="interest" type="number" placeholder="Interest %" />
+    <input
+      formControlName="payments"
+      type="number"
+      placeholder="Number of payments"
+    />
+  </div>
+
+  <button [disabled]="newForm.invalid">Add Operation</button>
+</form>

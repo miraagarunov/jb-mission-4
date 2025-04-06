@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo
+
+  backend:
+    build: ./backend
+    container_name: bank-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=docker
+      - MONGO_URI=mongodb://mongo:27017/BankAccounts
+
+  frontend:
+    build: ./front
+    container_name: bank-front
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend

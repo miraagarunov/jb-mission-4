@@ -1,0 +1,23 @@
+<div id="list">
+  <div class="form-row">
+    <input [(ngModel)]="accountNumber" placeholder="account id..." />
+    <button (click)="fetch()">get ops</button>
+  </div>
+
+  <div *ngIf="loading">Loading...</div>
+
+  <h3 *ngIf="!loading && operations.length > 0">
+    account operation: {{ accountNumber }}
+  </h3>
+
+  <div *ngIf="operations.length > 0">
+    <app-operation-single
+      *ngFor="let operation of operations"
+      [operation]="operation"
+    ></app-operation-single>
+  </div>
+
+  <div *ngIf="!loading && operations.length === 0">
+    <p>No operations found</p>
+  </div>
+</div>

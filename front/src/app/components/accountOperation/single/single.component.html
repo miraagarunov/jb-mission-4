@@ -1,0 +1,27 @@
+<div class="operation-card">
+  <div class="row">
+    <span class="label">Type:</span>
+    <span class="value">{{ operation.type }}</span>
+  </div>
+
+  <div class="row">
+    <span class="label">Amount:</span>
+    <span class="value">{{ operation.amount | currency }}</span>
+  </div>
+
+  <div class="row">
+    <span class="label">Date:</span>
+    <span class="value">{{ operation.date | date : "shortDate" }}</span>
+  </div>
+
+  <div *ngIf="operation.type === 'loan'">
+    <div class="row">
+      <span class="label">Interest:</span>
+      <span class="value">{{ operation.interest }}%</span>
+    </div>
+    <div class="row">
+      <span class="label">Payments:</span>
+      <span class="value">{{ operation.payments }}</span>
+    </div>
+  </div>
+</div>
