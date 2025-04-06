@@ -1,21 +1,3 @@
-<!-- <div>
-    <h2>Operations for Account: 123456</h2>
-  
-    <div *ngFor="let operation of list()">
-      <div class="operation-card">
-        <h3>{{ operation.type.toUpperCase() }}</h3>
-        <p>Amount: {{ operation.amount }}</p>
-        <p>Date: {{ formatDate(operation.date) }}</p>
-  
-        <div *ngIf="operation.type === 'loan'">
-          <p>Interest: {{ operation.interest }}%</p>
-          <p>Payments: {{ operation.payments }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-   -->
-
 <div id="list">
   <div class="form-row">
     <input [(ngModel)]="accountNumber" placeholder="account id..." />
